@@ -1,20 +1,20 @@
-func printOneToMaxNDigitNum(n int) {
+func printOneToNDigitMaxNum(n int) {
 	num := make([]byte, n)
-	dfs(num, 0)
+	setDigit(num, 0)
 }
 
-func dfs(num []byte, digit int) {
+func setDigit(num []byte, digit int) {
 	if digit == len(num) {
+		printNum(num)
 		return
 	}
-	for i := 0; i <= 9; i++ {
-		num[digit] = byte(i) + '0'
-		printlnNum(num)
-		dfs(num, digit+1)
+	for c := byte('0'); c <= '9'; c++ {
+		num[digit] = c
+		setDigit(num, digit+1)
 	}
 }
 
-func printlnNum(num []byte) {
+func printNum(num []byte) {
 	for i, c := range num {
 		if c != '0' {
 			fmt.Println(string(num[i:]))

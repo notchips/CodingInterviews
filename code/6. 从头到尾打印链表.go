@@ -5,7 +5,7 @@ type ListNode struct {
 
 func printListFromTailToHead(head *ListNode) []int {
 	if head == nil {
-		return []int{}
+		return nil
 	}
 	return append(printListFromTailToHead(head.Next), head.Val)
 }

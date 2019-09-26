@@ -3,7 +3,7 @@ func Power(base float64, exponent int) float64 {
 		return 1
 	}
 	if exponent&1 == 0 {
-		t := Power(base, exponent/2)
+		t := Power(base, exponent>>1)
 		return t * t
 	}
 	if exponent < 0 {

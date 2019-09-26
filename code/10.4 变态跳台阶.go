@@ -1,9 +1,13 @@
+/*
+	f(0) = 1
+	f(1) = f(0) = 1
+	f(2) = f(1) + f(0) = 2f(0) = 2
+	f(3) = f(2) + f(1) + f(0) = 4f(0) = 4
+	f(4) = f(3) + f(2) + f(1) + f(0) = 8f(0) = 8
+*/
 func JumpFloorII(target int) int {
-	ans := make([]int, target+1)
-	sum := make([]int, target+1)
-	for i := 1; i <= target; i++ {
-		ans[i] = sum[i-1] + 1
-		sum[i] = sum[i-1] + ans[i]
+	if target <= 0 {
+		return 0
 	}
-	return ans[target]
+	return int(math.Pow(2, float64(target-1)))
 }

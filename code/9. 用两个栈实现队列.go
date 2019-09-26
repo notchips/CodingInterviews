@@ -1,40 +1,44 @@
-type Queue struct {
-	in  *Stack
-	out *Stack
-}
-
-func (q Queue) Empty() bool {
-	return q.in.Empty() && q.out.Empty()
-}
-
-// Pop 在调用之前，必须保证Queue非空
-func (q Queue) Pop() int {
-	if q.out.Empty() {
-		for !q.in.Empty() {
-			q.out.Push(q.in.Pop())
-		}
-	}
-	return q.out.Pop()
-}
-
-func (q Queue) Push(i int) {
-	q.in.Push(i)
-}
-
 type Stack []int
+
+func (s *Stack) Push(v int) {
+	*s = append(*s, v)
+}
+
+func (s *Stack) Pop() (int, error) {
+	if s.Empty() {
+		return 0, errors.New("empty stack")
+	}
+	v := (*s)[len(*s)-1]
+	*s = (*s)[:len(*s)-1]
+	return v, nil
+}
 
 func (s Stack) Empty() bool {
 	return len(s) == 0
 }
 
-// Pop 在调用之前，必须保证Stack非空
-func (s *Stack) Pop() int {
-	n := len(*s)
-	top := (*s)[n-1]
-	*s = (*s)[:n-1]
-	return top
+type Queue struct {
+	in  *Stack
+	out *Stack
 }
 
-func (s *Stack) Push(i int) {
-	*s = append(*s, i)
+func (q *Queue) Push(v int) {
+	q.in.Push(v)
+}
+
+func (q *Queue) Pop() (int, error) {
+	if q.Empty() {
+		return 0, errors.New("empty queue")
+	}
+	if q.out.Empty() {
+		for !q.in.Empty() {
+			v, _ := q.in.Pop()
+			q.out.Push(v)
+		}
+	}
+	return q.out.Pop()
+}
+
+func (q Queue) Empty() bool {
+	return q.in.Empty() && q.out.Empty()
 }

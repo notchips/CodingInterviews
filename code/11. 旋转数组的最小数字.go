@@ -1,23 +1,21 @@
 func minNumberInRotateArray(array []int) int {
 	n := len(array)
-	if n == 0 {
+
+	switch n {
+	case 0:
 		return math.MaxInt64
-	}
-	if n == 1 {
+	case 1:
 		return array[0]
 	}
-	left, right := 0, n-1
-	mid := (left + right) / 2
-	if array[left] < array[mid] { // 左边递增
-		return min(array[left], minNumberInRotateArray(array[mid+1:]))
-	} else if array[mid] < array[right] { // 右边递增
-		return min(array[mid], minNumberInRotateArray(array[:mid]))
+
+	if array[0] < array[n-1] {
+		return array[0]
 	}
-	// 无法判断
-	return min(minNumberInRotateArray(array[:mid]), minNumberInRotateArray(array[mid:]))
+	
+	return minInt(minNumberInRotateArray(array[:n/2]), minNumberInRotateArray(array[n/2:]))
 }
 
-func min(a, b int) int {
+func minInt(a, b int) int {
 	if a < b {
 		return a
 	}

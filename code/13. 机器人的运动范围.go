@@ -1,28 +1,29 @@
 func movingCount(threshold int, rows int, cols int) int {
+	if rows <= 0 || cols <= 0 {
+		return 0
+	}
 	vis := make([][]bool, rows)
 	for i := range vis {
 		vis[i] = make([]bool, cols)
 	}
 	cnt := 0
-	dfs(threshold, rows, cols, 0, 0, vis, &cnt)
+	dfs(vis, 0, 0, threshold, &cnt)
 	return cnt
 }
 
-func dfs(threshold, rows, cols, row, col int, vis [][]bool, cnt *int) {
-	if row < 0 || row >= rows ||
-		col < 0 || col >= cols ||
+func dfs(vis [][]bool, row, col, threshold int, cnt *int) {
+	if row < 0 || row >= len(vis) ||
+		col < 0 || col >= len(vis[0]) ||
+		digitSum(row)+digitSum(col) > threshold ||
 		vis[row][col] {
 		return
 	}
 	vis[row][col] = true
-	if digitSum(row)+digitSum(col) > threshold {
-		return
-	}
 	*cnt++
-	dfs(threshold, rows, cols, row-1, col, vis, cnt)
-	dfs(threshold, rows, cols, row+1, col, vis, cnt)
-	dfs(threshold, rows, cols, row, col-1, vis, cnt)
-	dfs(threshold, rows, cols, row, col+1, vis, cnt)
+	dfs(vis, row+1, col, threshold, cnt)
+	dfs(vis, row-1, col, threshold, cnt)
+	dfs(vis, row, col+1, threshold, cnt)
+	dfs(vis, row, col-1, threshold, cnt)
 }
 
 func digitSum(num int) int {
