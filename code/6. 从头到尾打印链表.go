@@ -3,9 +3,10 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func printListFromTailToHead(head *ListNode) []int {
+func printListFromTailToHead(head *ListNode) {
 	if head == nil {
-		return nil
+		return
 	}
-	return append(printListFromTailToHead(head.Next), head.Val)
+	printListFromTailToHead(head.Next)
+	fmt.Println(head.Val)
 }
