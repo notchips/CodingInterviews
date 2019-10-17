@@ -1,3 +1,5 @@
+package code
+
 func replaceSpace(str *[]byte) {
 	p1 := len(*str) - 1
 	for i := 0; i <= p1; i++ {

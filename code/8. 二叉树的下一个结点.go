@@ -1,11 +1,7 @@
-type TreeLinkNode struct {
-	Left   *TreeLinkNode
-	Right  *TreeLinkNode
-	Father *TreeLinkNode
-}
+package code
 
 // 中序遍历：先遍历左子树，然后根结点，最后右子树
-func GetNext(pNode *TreeLinkNode) *TreeLinkNode {
+func getNext(pNode *TreeLinkNode) *TreeLinkNode {
 	if pNode == nil {
 		return nil
 	}

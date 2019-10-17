@@ -1,3 +1,5 @@
+package code
+
 func IsPopOrder(push, pop []int) bool {
 	if len(push) != len(pop) {
 		return false

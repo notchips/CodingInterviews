@@ -1,11 +1,15 @@
-func VerifySequenceOfBST(sequence []int) bool {
+package code
+
+import "sort"
+
+func VerifyPostOrder(sequence []int) bool {
 	clone := make([]int, len(sequence))
 	copy(clone, sequence)
 	sort.Ints(sequence)
-	return judgeInOrderAndPostOrder(sequence, clone)
+	return judge(sequence, clone)
 }
 
-func judgeInOrderAndPostOrder(in, post []int) bool {
+func judge(in, post []int) bool {
 	if len(in) == 0 {
 		return true
 	}
@@ -19,6 +23,6 @@ func judgeInOrderAndPostOrder(in, post []int) bool {
 	if mid == -1 {
 		return false
 	}
-	return judgeInOrderAndPostOrder(in[:mid], post[:mid]) &&
-		judgeInOrderAndPostOrder(in[mid+1:], post[mid:len(post)-1])
+	return judge(in[:mid], post[:mid]) &&
+		judge(in[mid+1:], post[mid:len(post)-1])
 }

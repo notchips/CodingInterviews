@@ -1,5 +1,7 @@
+package code
+
 func movingCount(threshold int, rows int, cols int) int {
-	if rows <= 0 || cols <= 0 {
+	if rows <= 0 || cols <= 0 || threshold < 0 {
 		return 0
 	}
 	vis := make([][]bool, rows)

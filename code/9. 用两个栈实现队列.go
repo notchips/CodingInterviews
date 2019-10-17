@@ -1,3 +1,7 @@
+package code
+
+import "errors"
+
 type Stack []int
 
 func (s *Stack) Push(v int) {

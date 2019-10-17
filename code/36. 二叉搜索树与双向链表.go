@@ -1,8 +1,4 @@
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+package code
 
 func Convert(root *TreeNode) *TreeNode {
 	head, _ := convert(root)

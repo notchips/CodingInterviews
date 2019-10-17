@@ -1,10 +1,6 @@
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+package code
 
-func PrintFromTopToBottom(root *TreeNode) []int {
+func LayerOrder(root *TreeNode) []int {
 	if root == nil {
 		return nil
 	}

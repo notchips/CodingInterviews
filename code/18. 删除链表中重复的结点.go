@@ -1,21 +1,23 @@
+package code
+
 func deleteDuplication(head *ListNode) *ListNode {
 	headNode := new(ListNode)
-	newPre := headNode
-	pre := &ListNode{Next: head}
+	tempNode := headNode
+	var pre *ListNode
 	for head != nil {
 		if !equal(pre, head) && !equal(head, head.Next) {
-			newPre.Next = head
-			newPre = newPre.Next
+			tempNode.Next = head
+			tempNode = tempNode.Next
 		}
-		head, pre = head.Next, head
+		pre, head = head, head.Next
 	}
-	newPre.Next = nil
+	tempNode.Next = nil
 	return headNode.Next
 }
 
 func equal(a, b *ListNode) bool {
-	if a != nil && b != nil && a.Val == b.Val {
-		return true
+	if a != nil && b != nil {
+		return a.Val == b.Val
 	}
-	return a == b
+	return true
 }

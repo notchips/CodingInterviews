@@ -1,3 +1,5 @@
+package code
+
 func hasPath(matrix [][]byte, str string) bool {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return false

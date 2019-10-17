@@ -1,12 +1,8 @@
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+package code
 
-func printListFromTailToHead(head *ListNode) {
+func reverseList(head *ListNode) []int {
 	if head == nil {
-		return
+		return nil
 	}
-	printListFromTailToHead(head.Next)
-	fmt.Println(head.Val)
+	return append(reverseList(head.Next), head.Val)
 }

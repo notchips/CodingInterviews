@@ -1,3 +1,5 @@
+package code
+
 func match(str string, pattern string) bool {
 	str, pattern = str+" ", pattern+" "
 	m, n := len(pattern), len(str)

@@ -1,3 +1,5 @@
+package code
+
 type stack struct {
 	dataS []int
 	minS  []int
@@ -17,7 +19,7 @@ func (s *stack) Push(val int) {
 	if s.Empty() {
 		s.minS = append(s.minS, val)
 	} else {
-		s.minS = append(s.minS, minInt(val, s.Min()))
+		s.minS = append(s.minS, MinInt(val, s.Min()))
 	}
 	s.len++
 }
@@ -46,11 +48,4 @@ func (s *stack) Min() int {
 
 func (s *stack) Empty() bool {
 	return s.len == 0
-}
-
-func minInt(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }

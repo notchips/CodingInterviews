@@ -1,19 +1,19 @@
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+package code
 
 func FindKthToTail(head *ListNode, k int) *ListNode {
-	pre, post := head, head
-	for post != nil && k > 0 {
-		post = post.Next
+	if k <= 0 {
+		return nil
+	}
+	slow, fast := head, head
+	for fast != nil && k > 0 {
+		fast = fast.Next
 		k--
 	}
 	if k > 0 {
 		return nil
 	}
-	for post != nil {
-		pre, post = pre.Next, post.Next
+	for fast != nil {
+		slow, fast = slow.Next, fast.Next
 	}
-	return pre
+	return slow
 }

@@ -1,3 +1,5 @@
+package code
+
 func MoreThanHalfNum(array []int) int {
 	ans, cnt := 0, 0
 	for _, num := range array {

@@ -1,27 +1,23 @@
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+package code
 
 func EntryNodeOfLoop(pHead *ListNode) *ListNode {
-	slow := moveKStep(pHead, 1)
-	fast := moveKStep(pHead, 2)
+	if pHead == nil {
+		return nil
+	}
+	slow, fast := pHead, pHead
+	if fast.Next == nil || fast.Next.Next == nil { // 无环
+		return nil
+	}
+	slow, fast = slow.Next, fast.Next.Next
 	for slow != fast {
-		slow = moveKStep(slow, 1)
-		fast = moveKStep(fast, 2)
+		if fast.Next == nil || fast.Next.Next == nil { // 无环
+			return nil
+		}
+		slow, fast = slow.Next, fast.Next.Next
 	}
 	fast = pHead
 	for slow != fast {
-		slow = moveKStep(slow, 1)
-		fast = moveKStep(fast, 1)
+		slow, fast = slow.Next, fast.Next
 	}
 	return slow
-}
-
-func moveKStep(node *ListNode, k int) *ListNode {
-	for node != nil && k > 0 {
-		node = node.Next
-		k--
-	}
-	return node
 }

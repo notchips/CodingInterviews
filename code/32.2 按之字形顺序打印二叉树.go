@@ -1,4 +1,6 @@
-func PrintZigzagLevelOrder(root *TreeNode) []int {
+package code
+
+func ZigzagLayerOrder(root *TreeNode) []int {
 	return bfs([]*TreeNode{root}, false)
 }
 
@@ -18,14 +20,7 @@ func bfs(roots []*TreeNode, reverse bool) []int {
 		}
 	}
 	if reverse {
-		reverseInt(values)
+		Reverse(values)
 	}
-	reverse = !reverse
-	return append(values, bfs(children, reverse)...)
-}
-
-func reverseInt(a []int) {
-	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
-		a[i], a[j] = a[j], a[i]
-	}
+	return append(values, bfs(children, !reverse)...)
 }

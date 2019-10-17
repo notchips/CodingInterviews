@@ -1,10 +1,13 @@
-//func reOrderArray(array []int) {
-//	n := len(array)
+package code
+
+//BubbleSort
+//func reOrderArray(a []int) {
+//	n := len(a)
 //	for i := 1; i < n; i++ {
 //		changed := false
 //		for j := 0; j < n-i; j++ {
-//			if array[j]&1 == 0 && array[j+1]&1 == 1 {
-//				array[j], array[j+1] = array[j+1], array[j]
+//			if a[j]&1 == 0 && a[j+1]&1 == 1 {
+//				a[j], a[j+1] = a[j+1], a[j]
 //				changed = true
 //			}
 //		}
@@ -14,11 +17,11 @@
 //	}
 //}
 
-func reOrderArray(array []int) {
-	clone := make([]int, len(array))
-	copy(clone, array)
+func reOrderArray(a []int) {
+	clone := make([]int, len(a))
+	copy(clone, a)
 	oddCnt := 0
-	for _, num := range array {
+	for _, num := range a {
 		if num&1 == 1 {
 			oddCnt++
 		}
@@ -26,10 +29,10 @@ func reOrderArray(array []int) {
 	oddPtr, evenPtr := 0, oddCnt
 	for _, num := range clone {
 		if num&1 == 1 {
-			array[oddPtr] = num
+			a[oddPtr] = num
 			oddPtr++
 		} else {
-			array[evenPtr] = num
+			a[evenPtr] = num
 			evenPtr++
 		}
 	}

@@ -1,36 +1,33 @@
+package code
+
 func printMatrix(matrix [][]int) []int {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return nil
 	}
-	m, n := len(matrix), len(matrix[0])
-	ans := make([]int, 0, m*n)
-	travelEdge(matrix, &ans)
+	ans := make([]int, 0, len(matrix)*len(matrix[0]))
+	rowStart, colStart := 0, 0
+	rowEnd, colEnd := len(matrix)-1, len(matrix[0])-1
+	for rowStart <= rowEnd && colStart <= colEnd {
+		for i := colStart; i <= colEnd; i++ {
+			ans = append(ans, matrix[rowStart][i])
+		}
+		for j := rowStart + 1; j <= rowEnd-1; j++ {
+			ans = append(ans, matrix[j][colEnd])
+		}
+		if rowEnd > rowStart {
+			for i := colEnd; i >= colStart; i-- {
+				ans = append(ans, matrix[rowEnd][i])
+			}
+		}
+		if colEnd > colStart {
+			for j := rowEnd - 1; j >= rowStart+1; j-- {
+				ans = append(ans, matrix[j][colStart])
+			}
+		}
+		rowStart++
+		colStart++
+		rowEnd--
+		colEnd--
+	}
 	return ans
-}
-
-func travelEdge(matrix [][]int, ans *[]int) {
-	m, n := len(matrix), len(matrix[0])
-	for col := 0; col < n; col++ {
-		*ans = append(*ans, matrix[0][col])
-	}
-	for row := 1; row < m-1; row++ {
-		*ans = append(*ans, matrix[row][n-1])
-	}
-	if m > 1 {
-		for col := n - 1; col >= 0; col-- {
-			*ans = append(*ans, matrix[m-1][col])
-		}
-	}
-	if n > 1 {
-		for row := m - 2; row >= 1; row-- {
-			*ans = append(*ans, matrix[row][0])
-		}
-	}
-	if m > 2 && n > 2 {
-		matrix = matrix[1 : m-1]
-		for row := range matrix {
-			matrix[row] = matrix[row][1 : n-1]
-		}
-		travelEdge(matrix, ans)
-	}
 }

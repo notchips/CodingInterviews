@@ -1,3 +1,5 @@
+package code
+
 func Power(base float64, exponent int) float64 {
 	if exponent == 0 {
 		return 1

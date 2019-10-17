@@ -1,23 +1,20 @@
-func minNumberInRotateArray(array []int) int {
-	n := len(array)
+package code
+
+import "math"
+
+func minNum(a []int) int {
+	n := len(a)
 
 	switch n {
 	case 0:
 		return math.MaxInt64
 	case 1:
-		return array[0]
+		return a[0]
 	}
 
-	if array[0] < array[n-1] {
-		return array[0]
+	if a[0] < a[n-1] {
+		return a[0]
 	}
-	
-	return minInt(minNumberInRotateArray(array[:n/2]), minNumberInRotateArray(array[n/2:]))
-}
 
-func minInt(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+	return MinInt(minNum(a[:n/2]), minNum(a[n/2:]))
 }

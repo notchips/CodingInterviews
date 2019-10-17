@@ -1,13 +1,15 @@
-func Find(target int, array [][]int) bool {
-	if len(array) == 0 || len(array[0]) == 0 {
+package code
+
+func find(a [][]int, target int) bool {
+	if len(a) == 0 || len(a[0]) == 0 {
 		return false
 	}
-	m, n := len(array), len(array[0])
+	m, n := len(a), len(a[0])
 	row, col := 0, n-1 //从右上角开始遍历，每次可排除一行或一列
 	for row < m-1 && col > 0 {
-		if array[row][col] == target {
+		if a[row][col] == target {
 			return true
-		} else if array[row][col] < target {
+		} else if a[row][col] < target {
 			row++
 		} else {
 			col--
@@ -17,9 +19,9 @@ func Find(target int, array [][]int) bool {
 		left, right := 0, col
 		for left <= right {
 			mid := left + (right-left)/2
-			if array[m-1][mid] == target {
+			if a[m-1][mid] == target {
 				return true
-			} else if array[m-1][mid] < target {
+			} else if a[m-1][mid] < target {
 				left = mid + 1
 			} else {
 				right = mid - 1
@@ -29,9 +31,9 @@ func Find(target int, array [][]int) bool {
 		top, down := row, m-1
 		for top <= down {
 			mid := top + (down-top)/2
-			if array[mid][0] == target {
+			if a[mid][0] == target {
 				return true
-			} else if array[mid][0] < target {
+			} else if a[mid][0] < target {
 				top = mid + 1
 			} else {
 				down = mid - 1

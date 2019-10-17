@@ -1,23 +1,25 @@
+package code
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
-func reConstructBinaryTree(pre []int, in []int) *TreeNode {
+func build(pre []int, in []int) *TreeNode {
 	if len(pre) == 0 {
 		return nil
 	}
-	var mid int
+	var pos int
 	for i, v := range in {
 		if v == pre[0] {
-			mid = i
+			pos = i
 			break
 		}
 	}
 	return &TreeNode{
 		Val:   pre[0],
-		Left:  reConstructBinaryTree(pre[1:mid+1], in[:mid]),
-		Right: reConstructBinaryTree(pre[mid+1:], in[mid+1:]),
+		Left:  build(pre[1:pos+1], in[:pos]),
+		Right: build(pre[pos+1:], in[pos+1:]),
 	}
 }

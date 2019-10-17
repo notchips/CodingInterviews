@@ -1,12 +1,18 @@
-func duplicate(numbers []int, length int, duplication *int) bool {
-	for i := range numbers {
-		for numbers[i] != i {
-			if numbers[i] == numbers[numbers[i]] {
-				*duplication = numbers[i]
-				return true
-			}
-			numbers[i], numbers[numbers[i]] = numbers[numbers[i]], numbers[i]
+package code
+
+func duplicate(a []int) (int, bool) {
+	for _, v := range a {
+		if v < 0 || v >= len(a) {
+			return 0, false
 		}
 	}
-	return false
+	for i := range a {
+		for a[i] != i {
+			if a[i] == a[a[i]] {
+				return a[i], true
+			}
+			a[i], a[a[i]] = a[a[i]], a[i]
+		}
+	}
+	return 0, false
 }
