@@ -4,7 +4,7 @@ package code
 // 故对于任意一个大于3的整数i都可以拆分为2和i-2，乘积>=原值
 // 因此因子只需要2或3（1是最差的），又由于2*2*2 < 3*3
 // 综上最优结果为：因子2不超过两个，其它因子全为3
-func integerBreak(n int) int {
+func IntegerBreak(n int) int {
 	switch {
 	case n < 2:
 		return 0

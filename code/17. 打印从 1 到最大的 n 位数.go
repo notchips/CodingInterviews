@@ -2,7 +2,7 @@ package code
 
 import "fmt"
 
-func printOneToNDigitMaxNum(n int) {
+func PrintOneToNDigitMaxNum(n int) {
 	num := make([]byte, n)
 	setDigit(num, 0)
 }

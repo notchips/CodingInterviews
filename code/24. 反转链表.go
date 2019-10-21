@@ -17,11 +17,12 @@ package code
 //头插法
 func ReverseList(head *ListNode) *ListNode {
 	headNode := new(ListNode)
-	for head != nil {
-		next := head.Next
-		head.Next = headNode.Next
-		headNode.Next = head
-		head = next
+	cur := head
+	for cur != nil {
+		next := cur.Next
+		cur.Next = headNode.Next
+		headNode.Next = cur
+		cur = next
 	}
 	return headNode.Next
 }

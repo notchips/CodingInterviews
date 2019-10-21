@@ -6,7 +6,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func build(pre []int, in []int) *TreeNode {
+func Build(pre []int, in []int) *TreeNode {
 	if len(pre) == 0 {
 		return nil
 	}
@@ -19,7 +19,7 @@ func build(pre []int, in []int) *TreeNode {
 	}
 	return &TreeNode{
 		Val:   pre[0],
-		Left:  build(pre[1:pos+1], in[:pos]),
-		Right: build(pre[pos+1:], in[pos+1:]),
+		Left:  Build(pre[1:pos+1], in[:pos]),
+		Right: Build(pre[pos+1:], in[pos+1:]),
 	}
 }

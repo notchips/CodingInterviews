@@ -1,6 +1,6 @@
 package code
 
-func deleteDuplication(head *ListNode) *ListNode {
+func DeleteDuplication(head *ListNode) *ListNode {
 	headNode := new(ListNode)
 	tempNode := headNode
 	var pre *ListNode
@@ -19,5 +19,8 @@ func equal(a, b *ListNode) bool {
 	if a != nil && b != nil {
 		return a.Val == b.Val
 	}
-	return true
+	if a == nil && b == nil {
+		return true
+	}
+	return false
 }

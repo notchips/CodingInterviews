@@ -1,7 +1,7 @@
 package code
 
 //BubbleSort
-//func reOrderArray(a []int) {
+//func ReOrderArray(a []int) {
 //	n := len(a)
 //	for i := 1; i < n; i++ {
 //		changed := false
@@ -17,7 +17,7 @@ package code
 //	}
 //}
 
-func reOrderArray(a []int) {
+func ReOrderArray(a []int) {
 	clone := make([]int, len(a))
 	copy(clone, a)
 	oddCnt := 0

@@ -1,6 +1,6 @@
 package code
 
-func movingCount(threshold int, rows int, cols int) int {
+func MovingCount(threshold int, rows int, cols int) int {
 	if rows <= 0 || cols <= 0 || threshold < 0 {
 		return 0
 	}

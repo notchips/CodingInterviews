@@ -1,6 +1,6 @@
 package code
 
-func match(str string, pattern string) bool {
+func isMatch(str string, pattern string) bool {
 	str, pattern = str+" ", pattern+" "
 	m, n := len(pattern), len(str)
 	dp := make([][]bool, m)

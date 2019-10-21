@@ -1,7 +1,7 @@
 package code
 
 func GetLeastNumbers(input []int, k int) []int {
-	if len(input) < k {
+	if k <= 0 || k > len(input) {
 		return nil
 	}
 	// 对前k个数建立大顶堆

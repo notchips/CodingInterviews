@@ -1,6 +1,6 @@
 package code
 
-func printMatrix(matrix [][]int) []int {
+func PrintMatrix(matrix [][]int) []int {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return nil
 	}

@@ -1,6 +1,6 @@
 package code
 
-func duplicate(a []int) (int, bool) {
+func Duplicate(a []int) (int, bool) {
 	for _, v := range a {
 		if v < 0 || v >= len(a) {
 			return 0, false

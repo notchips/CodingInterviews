@@ -1,6 +1,6 @@
 package code
 
-func find(a [][]int, target int) bool {
+func Find(a [][]int, target int) bool {
 	if len(a) == 0 || len(a[0]) == 0 {
 		return false
 	}

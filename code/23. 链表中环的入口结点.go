@@ -1,10 +1,10 @@
 package code
 
-func EntryNodeOfLoop(pHead *ListNode) *ListNode {
-	if pHead == nil {
+func EntryNodeOfLoop(head *ListNode) *ListNode {
+	if head == nil {
 		return nil
 	}
-	slow, fast := pHead, pHead
+	slow, fast := head, head
 	if fast.Next == nil || fast.Next.Next == nil { // 无环
 		return nil
 	}
@@ -15,7 +15,7 @@ func EntryNodeOfLoop(pHead *ListNode) *ListNode {
 		}
 		slow, fast = slow.Next, fast.Next.Next
 	}
-	fast = pHead
+	fast = head
 	for slow != fast {
 		slow, fast = slow.Next, fast.Next
 	}

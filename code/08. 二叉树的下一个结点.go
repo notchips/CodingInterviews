@@ -1,7 +1,7 @@
 package code
 
 // 中序遍历：先遍历左子树，然后根结点，最后右子树
-func getNext(pNode *TreeLinkNode) *TreeLinkNode {
+func GetNext(pNode *TreeLinkNode) *TreeLinkNode {
 	if pNode == nil {
 		return nil
 	}

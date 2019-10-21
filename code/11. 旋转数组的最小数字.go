@@ -2,7 +2,7 @@ package code
 
 import "math"
 
-func minNum(a []int) int {
+func MinNum(a []int) int {
 	n := len(a)
 
 	switch n {
@@ -16,5 +16,5 @@ func minNum(a []int) int {
 		return a[0]
 	}
 
-	return MinInt(minNum(a[:n/2]), minNum(a[n/2:]))
+	return MinInt(MinNum(a[:n/2]), MinNum(a[n/2:]))
 }
