@@ -22,17 +22,11 @@ type IntHeap struct {
 	less func(int, int) bool
 }
 
-func (h IntHeap) Len() int           { return len(h.vals) }
-func (h IntHeap) Less(i, j int) bool { return h.less(i, j) }
-func (h IntHeap) Swap(i, j int)      { h.vals[i], h.vals[j] = h.vals[j], h.vals[i] }
-func (h IntHeap) Top() int {
-	return h.vals[0]
-}
-
-func (h *IntHeap) Push(x interface{}) {
-	h.vals = append(h.vals, x.(int))
-}
-
+func (h IntHeap) Len() int            { return len(h.vals) }
+func (h IntHeap) Less(i, j int) bool  { return h.less(i, j) }
+func (h IntHeap) Swap(i, j int)       { h.vals[i], h.vals[j] = h.vals[j], h.vals[i] }
+func (h IntHeap) Top() int            { return h.vals[0] }
+func (h *IntHeap) Push(x interface{}) { h.vals = append(h.vals, x.(int)) }
 func (h *IntHeap) Pop() interface{} {
 	old := h.vals
 	n := len(old)
@@ -53,6 +47,13 @@ func MaxInt(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func AbsInt(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
 }
 
 func Reverse(a []int) {
