@@ -8,13 +8,13 @@ func FindFirstCommonNode(head1, head2 *ListNode) *ListNode {
 	l1MeetTail, l2MeetTail := 0, 0
 	for l1 != l2 {
 		if l1.Next == nil {
-			l1 = head1
+			l1 = head2
 			l1MeetTail++
 		} else {
 			l1 = l1.Next
 		}
 		if l2.Next == nil {
-			l2 = head2
+			l2 = head1
 			l2MeetTail++
 		} else {
 			l2 = l2.Next
